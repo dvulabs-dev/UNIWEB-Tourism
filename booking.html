@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking & Registration | Loka Eksplore</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header style="background: rgba(0,0,0,0.9);">
+        <div class="logo">Loka Eksplore</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="booking.html" class="active">Booking</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="reviews.html">Reviews</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="search-icon"><i class="fas fa-search"></i></div>
+    </header>
+
+    <main>
+        <section class="inner-header" style="background-image: url('https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=1920&q=80');">
+            <h1>Book Your Trip</h1>
+        </section>
+
+        <section class="container">
+            <div class="form-container">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Registration Form</h2>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="b-name">Full Name</label>
+                        <input type="text" id="b-name" name="b-name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="b-email">Email Address</label>
+                        <input type="email" id="b-email" name="b-email" required placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="package">Select Package</label>
+                        <select id="package" name="package" required>
+                            <option value="">-- Choose a Package --</option>
+                            <option value="bali">Bali Highlights Explorer</option>
+                            <option value="raja-ampat">Raja Ampat Dive Expedition</option>
+                            <option value="bromo">Bromo Sunrise Trek</option>
+                            <option value="komodo">Komodo Dragon Adventure</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Travel Date</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <input type="number" id="guests" name="guests" min="1" max="20" required value="1">
+                    </div>
+                    <button type="submit" class="btn-submit">Confirm Booking</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-contact">Contact Person: 0895679077688</div>
+        <div class="footer-credits">Created by nabiles_</div>
+        <div class="footer-credits">Special Collaboration</div>
+    </footer>
+
+</body>
+</html>
