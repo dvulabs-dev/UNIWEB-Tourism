@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loka Eksplore | Wonderful Indonesia</title>
+    <title>Lanka Explore | Wonder of Asia</title>
+    <meta name="description" content="Discover the breathtaking beauty of Sri Lanka with Lanka Explore. Book unforgettable tours to Sigiriya, Ella, Galle, Kandy and more.">
     <link rel="stylesheet" href="css/styles.css">
-    <!-- FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
     <header>
-        <div class="logo">Loka Eksplore</div>
+        <div class="logo">Lanka Explore</div>
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
@@ -32,51 +32,80 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
+            <video autoplay loop muted playsinline class="hero-video" id="heroVideo">
+                <source src="assert/SRI LANKA Experience _ Wild and breathtaking Nature.mp4" type="video/mp4">
+            </video>
+            <button id="muteBtn" class="mute-btn" aria-label="Toggle Mute"><i class="fas fa-volume-mute"></i></button>
+
             <div class="hero-content">
-                <h1>Wonderful<br>Indonesia</h1>
-                <p>Raja Ampat is an archipelago located in West Papua Province, Indonesia. Consisting of four main islands—Waigeo, Misool, Salawati, and Batanta—and hundreds of smaller islands, Raja Ampat is known as one of the world's paradises for nature lovers and divers.</p>
-                <p>This region boasts extraordinary marine biodiversity, including coral reefs, fish, and other marine life, making it one of the richest marine ecosystems in the world. Additionally, Raja Ampat offers breathtaking natural landscapes, with white sandy beaches, blue lagoons, and iconic karst formations.</p>
+                
+                <h1 class="hero-title">
+                    SRI LANKA<br>
+                    <span class="hero-title-sub">TOURS</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Ancient wonders, golden beaches, misty highlands all waiting for you.<br>
+                    Your unforgettable island adventure starts here.
+                </p>
+                <div class="hero-cta">
+                    <a href="destinations.html" class="btn-primary-hero">
+                        <i class="fas fa-compass"></i> Explore Destinations
+                    </a>
+                    <a href="tours.html" class="btn-secondary-hero">
+                        <i class="fas fa-route"></i> View Tour Packages
+                    </a>
+                </div>
+                
             </div>
-            
-            <div class="filter-bar">
-                <div class="filter-item">LOCATION <i class="fas fa-chevron-right"></i></div>
-                <div class="filter-item">TYPE <i class="fas fa-chevron-right"></i></div>
-                <div class="filter-item">DESTINATION</div>
-                <button class="filter-btn">CHOOSE YOUR TRAVEL</button>
+
+            <div class="hero-scroll-hint">
+                <span>Scroll to explore</span>
+                <i class="fas fa-chevron-down hero-scroll-icon"></i>
             </div>
         </section>
 
+
         <!-- Scrolling Cards Section -->
         <section class="scrolling-destinations">
+            <div class="section-title">
+                <h2>Popular Destinations</h2>
+                <p>Explore the most visited travel spots across the island of Sri Lanka</p>
+                <div class="line"></div>
+            </div>
             <div class="scroll-container">
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=600&q=80" alt="Gunung Bromo">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sigiriya_%28141688197%29.jpeg/800px-Sigiriya_%28141688197%29.jpeg" alt="Sigiriya Rock Fortress">
                     <div class="card-info">
-                        <h3>Gunung Bromo Jawa Tengah</h3>
+                        <h3>Sigiriya</h3>
+                        <p style="color:rgba(255,255,255,0.6); margin:0; font-size:0.85rem;">Rock Fortress</p>
                     </div>
                 </article>
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=600&q=80" alt="Bali Indonesia">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/NuwaraEliya_from_top.jpg/800px-NuwaraEliya_from_top.jpg" alt="Nine Arches Bridge Ella">
                     <div class="card-info">
-                        <h3>Bali Indonesia</h3>
+                        <h3>Ella</h3>
+                        <p style="color:rgba(255,255,255,0.6); margin:0; font-size:0.85rem;">Hill Country</p>
                     </div>
                 </article>
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1588668214407-6ea9a6d8c272?auto=format&fit=crop&w=600&q=80" alt="Gunung Rinjani">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Galle_Fort.jpg/800px-Galle_Fort.jpg" alt="Galle Fort">
                     <div class="card-info">
-                        <h3>Gunung Rinjani Lombok</h3>
+                        <h3>Galle</h3>
+                        <p style="color:rgba(255,255,255,0.6); margin:0; font-size:0.85rem;">Colonial Fort City</p>
                     </div>
                 </article>
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1604999333679-b86d54738315?auto=format&fit=crop&w=600&q=80" alt="Nusa Penida">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg/800px-SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg" alt="Kandy Temple">
                     <div class="card-info">
-                        <h3>Nusa Penida Bali</h3>
+                        <h3>Kandy</h3>
+                        <p style="color:rgba(255,255,255,0.6); margin:0; font-size:0.85rem;">Sacred City</p>
                     </div>
                 </article>
                 <article class="card">
-                    <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?auto=format&fit=crop&w=600&q=80" alt="Raja Ampat">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Yala_Beach.jpg/800px-Yala_Beach.jpg" alt="Mirissa Beach">
                     <div class="card-info">
-                        <h3>Raja Ampat Papua</h3>
+                        <h3>Mirissa</h3>
+                        <p style="color:rgba(255,255,255,0.6); margin:0; font-size:0.85rem;">Beach Paradise</p>
                     </div>
                 </article>
             </div>
@@ -85,17 +114,17 @@
         <!-- Video Section -->
         <section class="video-section">
             <div class="video-text">
-                <h2>Travel and<br>Enjoy the<br>Beauty of<br>Nature</h2>
-                <p>Bali is an Indonesian island located in Southeast Asia, known for its stunning natural beauty, vibrant culture, and rich history. It is often referred to as the "Island of the Gods" due to its many temples and spiritual significance. Bali features picturesque beaches, lush rice terraces, volcanic mountains, and a lively arts scene.</p>
-                <p>The island is a popular destination for tourists seeking relaxation, adventure, and cultural experiences, with activities ranging from surfing and diving to traditional Balinese dance and ceremonies.</p>
+                <h2>Travel and<br>Enjoy the<br>Wonder of<br>Asia</h2>
+                <p>Sri Lanka offers an extraordinary mix of landscapes, from sun-kissed beaches in the south to cool misty mountains in the centre. The island's rich cultural heritage spans over 2,500 years, with ancient kingdoms, sacred Buddhist temples, and vibrant festivals.</p>
+                <p>Whether you're chasing waterfalls in Nuwara Eliya, spotting blue whales off Mirissa, or exploring the cobblestone streets of Galle Fort, Sri Lanka promises adventures that will stay with you forever.</p>
             </div>
             <div class="video-grid">
                 <div class="video-card">
-                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=800&q=80" alt="Video Thumbnail 1">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg/800px-SL_Kandy_asv2020-01_img33_Sacred_Tooth_Temple.jpg" alt="Sri Lanka Culture">
                     <div class="play-btn"></div>
                 </div>
                 <div class="video-card">
-                    <img src="https://images.unsplash.com/photo-1555400038-63f5ba517a47?auto=format&fit=crop&w=800&q=80" alt="Video Thumbnail 2">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Yala_Beach.jpg/800px-Yala_Beach.jpg" alt="Sri Lanka Beaches">
                     <div class="play-btn"></div>
                 </div>
             </div>
@@ -103,10 +132,58 @@
     </main>
 
     <footer>
-        <div class="footer-contact">Contact Person: 0895679077688</div>
-        <div class="footer-credits">Created by nabiles_</div>
-        <div class="footer-credits">Special Collaboration</div>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo">Lanka Explore</span>
+                <p>Your gateway to the wonders of Sri Lanka. We craft unforgettable travel experiences that connect you with nature, culture, and adventure across the Pearl of the Indian Ocean.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="contact.html">Get in Touch</a></li>
+                    <li><a href="booking.html">Book a Trip</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-contact">Contact: +94 77 123 4567</div>
+            <div class="footer-credits">&copy; 2026 Lanka Explore. All rights reserved.</div>
+        </div>
     </footer>
 
+    <script>
+        const video = document.getElementById('heroVideo');
+        const muteBtn = document.getElementById('muteBtn');
+        const icon = muteBtn.querySelector('i');
+
+        muteBtn.addEventListener('click', () => {
+            if (video.muted) {
+                video.muted = false;
+                icon.classList.remove('fa-volume-mute');
+                icon.classList.add('fa-volume-up');
+            } else {
+                video.muted = true;
+                icon.classList.remove('fa-volume-up');
+                icon.classList.add('fa-volume-mute');
+            }
+        });
+    </script>
 </body>
 </html>
