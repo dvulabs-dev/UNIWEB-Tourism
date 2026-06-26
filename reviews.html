@@ -8,43 +8,116 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+
     <header>
         <div class="logo">Lanka Explore</div>
-        <nav><ul><li><a href="index.html">Home</a></li><li><a href="reviews.html" class="active">Reviews</a></li></ul></nav>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="destinations.html">Destinations</a></li>
+                <li><a href="tours.html">Tours</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="reviews.html" class="active">Reviews</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+        <div class="search-icon"><i class="fas fa-search"></i></div>
     </header>
+
     <main>
-        <section class="inner-header" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Yala_Beach.jpg');">
+        <section class="inner-header" style="background-image: url('assert/galle_fort.png');">
             <h1>Customer Reviews</h1>
         </section>
+
         <section class="container">
             <div class="section-title">
                 <h2>What Our Travelers Say</h2>
                 <p>Read about the experiences of our happy clients.</p>
+                <div class="line"></div>
             </div>
-            <div class="grid-3" style="margin-top: 2rem;">
-                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); padding: 2rem; border-radius: 15px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;"><i class="fas fa-user"></i></div>
-                    <div style="color: #ffc107; margin-bottom: 1rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p style="color: #ccc; font-style: italic; margin-bottom: 1rem;">"The cultural triangle tour was an absolute dream. Our guide was incredibly knowledgeable. Highly recommend!"</p>
-                    <h4 style="color: #fff;">Sarah Jenkins</h4>
-                    <span style="color: var(--accent-color); font-size: 0.8rem;">UK</span>
-                </div>
-                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); padding: 2rem; border-radius: 15px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;"><i class="fas fa-user"></i></div>
-                    <div style="color: #ffc107; margin-bottom: 1rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-                    <p style="color: #ccc; font-style: italic; margin-bottom: 1rem;">"Surfing in Mirissa and the safari in Yala were the highlights of our trip. Everything was perfectly organized."</p>
-                    <h4 style="color: #fff;">Mark Thompson</h4>
-                    <span style="color: var(--accent-color); font-size: 0.8rem;">Australia</span>
-                </div>
-                <div style="background: var(--glass-bg); backdrop-filter: var(--glass-blur); padding: 2rem; border-radius: 15px; border: 1px solid var(--glass-border); display: flex; flex-direction: column; align-items: center; text-align: center;">
-                    <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--accent-color); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: #fff; margin-bottom: 1rem;"><i class="fas fa-user"></i></div>
-                    <div style="color: #ffc107; margin-bottom: 1rem;"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-                    <p style="color: #ccc; font-style: italic; margin-bottom: 1rem;">"The train to Ella is magical! Lanka Explore arranged the tickets and boutique hotels flawlessly. We will be back."</p>
-                    <h4 style="color: #fff;">Elena Garcia</h4>
-                    <span style="color: var(--accent-color); font-size: 0.8rem;">Spain</span>
-                </div>
+
+            <div class="grid-3" style="margin-top: 3rem;">
+                <article class="review-card">
+                    <div class="review-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Sigiriya_%28141688197%29.jpeg');"></div>
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Sarah Jenkins" class="reviewer-img">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The cultural triangle tour was an absolute dream. Our guide was incredibly knowledgeable and the boutique hotels were stunning. Highly recommend Lanka Explore!"</p>
+                    <h4 class="reviewer-name">Sarah Jenkins</h4>
+                    <span class="reviewer-country">United Kingdom</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/77/Yala_Beach.jpg');"></div>
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Mark Thompson" class="reviewer-img">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="review-text">"Surfing in Mirissa and the leopard safari in Yala were the absolute highlights of our trip. Everything was perfectly organized from start to finish."</p>
+                    <h4 class="reviewer-name">Mark Thompson</h4>
+                    <span class="reviewer-country">Australia</span>
+                </article>
+
+                <article class="review-card">
+                    <div class="review-bg" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c6/NuwaraEliya_from_top.jpg');"></div>
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Elena Garcia" class="reviewer-img">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"The train to Ella is magical! Lanka Explore arranged the tickets and boutique hotels flawlessly. We loved the tea plantations and will definitely be back."</p>
+                    <h4 class="reviewer-name">Elena Garcia</h4>
+                    <span class="reviewer-country">Spain</span>
+                </article>
             </div>
         </section>
     </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo">Lanka Explore</span>
+                <p>Your gateway to the wonders of Sri Lanka. We craft unforgettable travel experiences that connect you with nature, culture, and adventure across the Pearl of the Indian Ocean.</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="destinations.html">Destinations</a></li>
+                    <li><a href="tours.html">Tours</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="reviews.html">Reviews</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="contact.html">Get in Touch</a></li>
+                    <li><a href="booking.html">Book a Trip</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-contact">Contact: +94 77 123 4567</div>
+            <div class="footer-credits">&copy; 2026 Lanka Explore. All rights reserved.</div>
+        </div>
+    </footer>
 </body>
 </html>
