@@ -25,31 +25,346 @@
         <div class="search-icon"><i class="fas fa-search"></i></div>
     </header>
 
-    <main>
-        <section class="inner-header" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Sigiriya_%28141688197%29.jpeg');">
-            <h1>About Us</h1>
+    <main style="background-color: #000000; color: #fff;">
+        <style>
+            body.page-with-bg { background: #000000 !important; }
+            .page-bg-overlay { display: none !important; }
+            
+            /* HERO SECTION */
+            .about-hero {
+                position: relative;
+                min-height: 800px;
+                padding: 150px 5% 100px;
+                background: url('assert/srilanka_greenery.png') center/cover;
+                display: flex;
+                align-items: center;
+                overflow: hidden;
+            }
+            .about-hero::after {
+                content: '';
+                position: absolute;
+                bottom: 0; left: 0; width: 100%; height: 150px;
+                background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23000000" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,197.3C384,203,480,181,576,160C672,139,768,117,864,122.7C960,128,1056,160,1152,165.3C1248,171,1344,149,1392,138.7L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom/cover no-repeat;
+                z-index: 2;
+            }
+            .about-hero-content {
+                position: relative;
+                z-index: 3;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 50px;
+            }
+            .about-hero-left {
+                flex: 1;
+                min-width: 300px;
+                max-width: 600px;
+            }
+            .about-hero-title {
+                font-size: 4.5rem;
+                font-family: var(--font-main);
+                font-weight: 800;
+                line-height: 1.1;
+                margin-bottom: 20px;
+                text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            }
+            .about-hero-desc {
+                font-size: 1.1rem;
+                color: #ddd;
+                line-height: 1.6;
+                margin-bottom: 30px;
+                max-width: 450px;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+            }
+            .btn-outline-yellow {
+                border: 2px solid #e2c044;
+                color: #e2c044;
+                background: transparent;
+                padding: 12px 30px;
+                border-radius: 30px;
+                font-weight: 600;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+            .btn-outline-yellow:hover {
+                background: #e2c044;
+                color: #000;
+            }
+            
+            .about-hero-slider {
+                display: flex;
+                gap: 20px;
+                align-items: center;
+                position: relative;
+            }
+            .slider-card {
+                width: 250px;
+                height: 150px;
+                border-radius: 15px;
+                background-size: cover;
+                background-position: center;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+                position: relative;
+                overflow: hidden;
+            }
+            .slider-card.small {
+                width: 180px;
+                height: 120px;
+                opacity: 0.8;
+            }
+            .slider-card-content {
+                position: absolute;
+                bottom: 15px; left: 15px;
+                z-index: 2;
+            }
+            .slider-card::before {
+                content: '';
+                position: absolute; top:0; left:0; width:100%; height:100%;
+                background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            }
+            .slider-controls {
+                position: absolute;
+                bottom: -20px;
+                left: 50px;
+                background: rgba(255,255,255,0.2);
+                backdrop-filter: blur(5px);
+                border-radius: 20px;
+                padding: 5px 15px;
+                display: flex;
+                gap: 10px;
+                z-index: 10;
+            }
+            .slider-controls i { cursor: pointer; color: #fff; }
+
+            /* STATS SECTION */
+            .stats-section {
+                padding: 80px 5%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+            }
+            .stats-grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+                text-align: center;
+                margin-bottom: 30px;
+                padding-bottom: 30px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+            .stats-grid i { font-size: 2rem; color: #888; margin-bottom: 10px; }
+            .stats-grid p { font-size: 0.8rem; color: #aaa; margin-bottom: 5px; }
+            .stats-grid h3 { font-size: 2rem; color: #fff; font-family: var(--font-main); }
+            
+            .stats-desc {
+                color: #aaa;
+                line-height: 1.8;
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+            .stats-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .stats-icons { display: flex; gap: 15px; }
+            .stats-icons i {
+                width: 40px; height: 40px;
+                border-radius: 50%;
+                border: 1px solid rgba(255,255,255,0.2);
+                display: flex; justify-content: center; align-items: center;
+                color: #ccc;
+            }
+            .learn-more { color: #e2c044; font-weight: 600; text-decoration: none; border-bottom: 1px solid #e2c044; }
+
+            /* FAN CARDS */
+            .fan-cards-container {
+                position: relative;
+                height: 400px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .fan-card {
+                width: 180px;
+                height: 280px;
+                border-radius: 15px;
+                background-size: cover;
+                background-position: center;
+                position: absolute;
+                box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+                border: 2px solid rgba(255,255,255,0.8);
+                transition: transform 0.3s ease;
+            }
+            .fan-card:nth-child(1) { transform: translateX(-100px) rotate(-10deg) translateY(20px); z-index: 1; }
+            .fan-card:nth-child(2) { transform: scale(1.1); z-index: 3; }
+            .fan-card:nth-child(3) { transform: translateX(100px) rotate(10deg) translateY(20px); z-index: 2; }
+            .fan-card:hover { transform: scale(1.15) translateY(-10px); z-index: 10; border-color: #e2c044; }
+
+            /* ABOUT US SECTION */
+            .about-block {
+                padding: 60px 5%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+            }
+            .about-image {
+                width: 100%;
+                border-radius: 20px;
+                border: 2px solid rgba(255,255,255,0.8);
+                box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            }
+            .about-text h2 {
+                font-size: 3.5rem;
+                font-family: var(--font-main);
+                margin-bottom: 20px;
+                color: #fff;
+            }
+            .about-text p {
+                color: #aaa;
+                line-height: 1.8;
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+            .about-features {
+                display: flex;
+                justify-content: space-between;
+                border-top: 1px dashed rgba(255,255,255,0.2);
+                padding-top: 30px;
+            }
+            .feature-item { text-align: center; color: #ccc; }
+            .feature-item i { font-size: 1.8rem; color: #85b0d6; margin-bottom: 10px; display: block; }
+            .feature-item span { font-size: 0.8rem; }
+
+            /* DESTINATIONS ROW */
+            .dest-row {
+                padding: 80px 5%;
+                text-align: center;
+            }
+            .dest-row h2 {
+                font-size: 3rem;
+                font-family: var(--font-main);
+                margin-bottom: 40px;
+            }
+            .dest-list {
+                display: flex;
+                justify-content: center;
+                gap: 40px;
+                flex-wrap: wrap;
+                font-family: var(--font-heading);
+                font-size: 1.8rem;
+            }
+            .dest-list span { color: #888; cursor: pointer; transition: color 0.3s; }
+            .dest-list span:hover { color: #fff; }
+            .dest-list span.active { color: #e2c044; font-weight: 800; transform: scale(1.2); }
+        </style>
+
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="about-hero-content">
+                <div class="about-hero-left">
+                    <h1 class="about-hero-title">Journey to All World Corners</h1>
+                    <p class="about-hero-desc">Unlock the wonders of the world. Your dream trip. Our tours offer a diverse range of destinations that cater to a wide variety of interests.</p>
+                    <button class="btn-outline-yellow">Book a Trip</button>
+                </div>
+                <div class="about-hero-slider">
+                    <div class="slider-card" style="background-image: url('assert/srilanka_wildlife.png');">
+                        <div class="slider-card-content">
+                            <span style="font-size: 0.7rem; color: #ccc;">Sri Lanka</span>
+                            <h4 style="color: #fff; font-family: var(--font-main); font-size: 1.2rem;">Yala Safari</h4>
+                        </div>
+                    </div>
+                    <div class="slider-card small" style="background-image: url('assert/galle_fort.png');">
+                        <div class="slider-card-content">
+                            <span style="font-size: 0.7rem; color: #ccc;">Sri Lanka</span>
+                            <h4 style="color: #fff; font-family: var(--font-main); font-size: 1rem;">Galle Fort</h4>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <i class="fas fa-chevron-left"></i>
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="container">
-            <div class="section-title">
-                <h2>Our Story</h2>
-                <p>Welcome to Lanka Explore, your premier travel partner for discovering the magic of Sri Lanka.</p>
+        <!-- Stats & Fan Cards -->
+        <section class="stats-section">
+            <div>
+                <div class="stats-grid">
+                    <div>
+                        <i class="far fa-calendar-alt"></i>
+                        <p>Years of Experience</p>
+                        <h3>10</h3>
+                    </div>
+                    <div>
+                        <i class="far fa-smile"></i>
+                        <p>Satisfied Clients</p>
+                        <h3>5000</h3>
+                    </div>
+                    <div>
+                        <i class="fas fa-globe-americas"></i>
+                        <p>Countries Covered</p>
+                        <h3>100</h3>
+                    </div>
+                </div>
+                <p class="stats-desc">Our tours offer a diverse range of destinations that cater to a wide variety of interests. From sun-drenched sandy beaches with crystal-clear blue oceans, to breathtaking mountain landscapes, tranquil lakes, and lush forests, we've got you covered.<br><br>Don't waste your chance! We have a tempting offer for: the first 50 people who apply for the tour will receive a 15% discount on purchases from our partners.</p>
+                <div class="stats-footer">
+                    <div class="stats-icons">
+                        <i class="fas fa-crown"></i>
+                        <i class="fas fa-crosshairs"></i>
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <a href="#" class="learn-more">Learn more &rarr;</a>
+                </div>
             </div>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem;">
-                <div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/NuwaraEliya_from_top.jpg" alt="Sri Lanka Highlands" style="border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <div class="fan-cards-container">
+                <div class="fan-card" style="background-image: url('assert/srilanka_wildlife.png');"></div>
+                <div class="fan-card" style="background-image: url('assert/srilanka_greenery.png');"></div>
+                <div class="fan-card" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/e/e6/Sigiriya_%28141688197%29.jpeg');"></div>
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section class="about-block">
+            <div>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/NuwaraEliya_from_top.jpg" alt="Office/View" class="about-image">
+            </div>
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>Our team of travel experts is passionate about exploring the world and helping our clients do the same. With years of experience in the travel industry, we have developed strong relationships with suppliers and vendors around the world, allowing us to offer exclusive deals and insider access to some of the world's most incredible destinations.<br><br>At our travel agency, we believe that travel is more than just visiting new places - it's about experiencing new cultures, meeting new people, and creating memories that last a lifetime.</p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check-shield"></i>
+                        <span>Reliability</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="far fa-clock"></i>
+                        <span>At Best</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-dollar-sign"></i>
+                        <span>Profitability</span>
+                    </div>
                 </div>
-                <div>
-                    <h3 style="font-size: 2rem; color: var(--accent-color); margin-bottom: 1rem;">Passion for the Pearl of the Indian Ocean</h3>
-                    <p style="color: #ccc; margin-bottom: 1.5rem;">We are passionate about showcasing the true beauty, culture, and hospitality of our island home. Our expert guides and carefully curated itineraries ensure you experience the best of Sri Lanka.</p>
-                    <p style="color: #ccc; margin-bottom: 1.5rem;">Whether you are seeking thrilling adventures in the lush highlands, serene moments on our golden beaches, or a deep dive into centuries-old history, we are here to craft your perfect journey.</p>
-                    <ul style="list-style: none; color: #fff;">
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Local Expertise</li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> Handpicked Destinations</li>
-                        <li style="margin-bottom: 10px;"><i class="fas fa-check" style="color: var(--accent-color); margin-right: 10px;"></i> 24/7 Support on Tour</li>
-                    </ul>
-                </div>
+            </div>
+        </section>
+
+        <!-- Destinations Row -->
+        <section class="dest-row">
+            <h2>Destinations</h2>
+            <div class="dest-list">
+                <span>Australia</span>
+                <span>Africa</span>
+                <span>Europe</span>
+                <span class="active">Asia</span>
+                <span>New Zeland</span>
             </div>
         </section>
     </main>

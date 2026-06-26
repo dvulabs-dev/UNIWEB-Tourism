@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +12,7 @@
         #booking-form {
             transition: opacity 0.3s ease;
         }
+
         #success-message {
             display: none;
             position: absolute;
@@ -24,6 +26,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -45,60 +48,293 @@
         <div class="search-icon"><i class="fas fa-search"></i></div>
     </header>
 
-    <main>
-        <section class="inner-header" style="background-image: url('assert/galle_fort.png');">
-            <h1>Book Your Tour</h1>
+    <main style="background-color: #050505; color: #fff;">
+        <style>
+            body.page-with-bg { background: #050505 !important; }
+            .page-bg-overlay { display: none !important; }
+            
+            .hero-flash {
+                position: relative;
+                height: 100vh;
+                min-height: 800px;
+                background: linear-gradient(to bottom, rgba(5,5,5,0.2) 0%, rgba(5,5,5,1) 100%), url('assert/srilanka_wildlife.png') center/cover;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 150px 5% 50px;
+            }
+            .hero-flash-title {
+                font-size: 5rem;
+                font-family: var(--font-main);
+                color: #00e5ff;
+                font-weight: 700;
+                letter-spacing: 2px;
+                margin-bottom: 1rem;
+            }
+            .hero-flash-desc {
+                max-width: 500px;
+                font-size: 1rem;
+                line-height: 1.6;
+                color: #ccc;
+            }
+            .tour-cards-container {
+                display: flex;
+                gap: 20px;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin-top: 40px;
+            }
+            .tour-card-flash {
+                width: 220px;
+                height: 350px;
+                border-radius: 10px;
+                background-size: cover;
+                background-position: center;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+                transition: all 0.3s ease;
+                cursor: pointer;
+                border: 2px solid transparent;
+            }
+            .tour-card-flash::before {
+                content: '';
+                position: absolute;
+                bottom: 0; left: 0; width: 100%; height: 50%;
+                background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            }
+            .tour-card-flash:hover, .tour-card-flash.active {
+                transform: translateY(-10px);
+                border: 2px solid #00e5ff;
+            }
+            .tour-card-flash-content {
+                position: absolute;
+                bottom: 20px;
+                width: 100%;
+                text-align: center;
+                z-index: 2;
+            }
+            .tour-card-flash h4 {
+                color: #fff;
+                font-size: 1.2rem;
+                font-family: var(--font-main);
+                margin-bottom: 5px;
+            }
+            .tour-card-flash p {
+                color: #aaa;
+                font-size: 0.8rem;
+            }
+            
+            /* Booking Modal Styles */
+            .booking-modal {
+                position: fixed;
+                top: 0; left: 0; width: 100%; height: 100%;
+                background: rgba(0,0,0,0.8);
+                backdrop-filter: blur(10px);
+                z-index: 1000;
+                display: none;
+                justify-content: center;
+                align-items: center;
+            }
+            .booking-modal.active {
+                display: flex;
+            }
+            .modal-content {
+                background: #111;
+                padding: 40px;
+                border-radius: 20px;
+                width: 90%;
+                max-width: 500px;
+                border: 1px solid rgba(0, 229, 255, 0.3);
+                position: relative;
+                box-shadow: 0 20px 50px rgba(0, 229, 255, 0.1);
+            }
+            .close-modal {
+                position: absolute;
+                top: 20px; right: 20px;
+                color: #fff;
+                font-size: 1.5rem;
+                cursor: pointer;
+                transition: color 0.3s ease;
+            }
+            .close-modal:hover {
+                color: #00e5ff;
+            }
+            
+            .modal-content .form-group input, 
+            .modal-content .form-group select {
+                background: #222 !important;
+                border: 1px solid #444 !important;
+                color: #fff !important;
+            }
+            .modal-content .btn-submit {
+                background: #00e5ff;
+                color: #000;
+                font-weight: 800;
+                border: none;
+                width: 100%;
+            }
+        </style>
+
+        <!-- Hero Section -->
+        <section class="hero-flash">
+            <div>
+                <h1 class="hero-flash-title">TIME TO TRAVEL</h1>
+                <p class="hero-flash-desc">The best time to visit Sri Lanka is from December to April when the weather is bright and sunny. Experience the crown jewels of the Indian Ocean, featuring ancient temples, lush tea estates, and vibrant wildlife.</p>
+            </div>
+            
+            <!-- Bottom Features -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 40px; margin-top: auto;">
+                <div style="display: flex; gap: 15px;">
+                    <i class="fas fa-map-marked-alt" style="color: #00e5ff; font-size: 2.5rem;"></i>
+                    <div>
+                        <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 10px; line-height: 1.5;">The Crown Jewel of Sri Lanka, Galle Fort is one of the most coveted historical sites.</p>
+                        <a href="#" style="color: #fff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">More Detailed &rarr;</a>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <i class="fas fa-route" style="color: #00e5ff; font-size: 2.5rem;"></i>
+                    <div>
+                        <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 10px; line-height: 1.5;">The most popular route is The Tea Country, an exposed but breathtaking passage.</p>
+                        <a href="#" style="color: #fff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">More Detailed &rarr;</a>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 15px;">
+                    <i class="fas fa-mountain" style="color: #00e5ff; font-size: 2.5rem;"></i>
+                    <div>
+                        <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 10px; line-height: 1.5;">This historic route involves a few technical pitches and offers the most direct line.</p>
+                        <a href="#" style="color: #fff; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">More Detailed &rarr;</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Side Numbers -->
+            <div style="position: absolute; right: 5%; top: 40%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 15px; color: #555; font-size: 0.9rem; text-align: right;">
+                <span>01</span>
+                <span>02</span>
+                <span style="color: #fff; font-size: 1.2rem; position: relative;">03<span style="position: absolute; right: -40px; top: 50%; width: 30px; height: 1px; background: #fff;"></span></span>
+                <span>04</span>
+                <span>05</span>
+            </div>
         </section>
 
-        <section class="container">
-            <div class="form-container" style="position: relative; overflow: hidden; min-height: 450px; display: flex; flex-direction: column; justify-content: center;">
-                <div class="contact-bg" style="background-image: url('assert/srilanka_wildlife.png');"></div>
+        <!-- Popular Tours Section -->
+        <section style="padding: 80px 5%; text-align: center;">
+            <h2 style="color: #00e5ff; font-family: var(--font-main); font-size: 2rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 10px;">Popular Tours</h2>
+            <p style="color: #888; font-size: 0.9rem;">Explore our most sought-after destinations.</p>
+            
+            <div class="tour-cards-container">
+                <div class="tour-card-flash" style="background-image: url('assert/galle_fort.png');">
+                    <div class="tour-card-flash-content">
+                        <h4>TOUR 1</h4>
+                        <p>Galle Fort Heritage</p>
+                    </div>
+                </div>
+                <div class="tour-card-flash active" style="background-image: url('assert/srilanka_greenery.png');">
+                    <div class="tour-card-flash-content">
+                        <h4>TOUR 2</h4>
+                        <p>Tea Country Explorer</p>
+                    </div>
+                </div>
+                <div class="tour-card-flash" style="background-image: url('assert/srilanka_wildlife.png');">
+                    <div class="tour-card-flash-content">
+                        <h4>TOUR 3</h4>
+                        <p>Wildlife Safari</p>
+                    </div>
+                </div>
+                <div class="tour-card-flash" style="background-image: url('assert/srilanka_greenery.png'); background-position: left;">
+                    <div class="tour-card-flash-content">
+                        <h4>TOUR 4</h4>
+                        <p>Ella Mountain Hike</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Big Creative Book Now Button -->
+            <div style="margin-top: 50px;">
+                <button id="open-booking-modal" style="background: #00e5ff; color: #000; border: none; padding: 18px 60px; border-radius: 50px; font-weight: 800; font-size: 1.2rem; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease;">Book Now</button>
+            </div>
+        </section>
+
+        <!-- Discover Section -->
+        <section style="padding: 80px 5%; background: linear-gradient(rgba(5,5,5,0.8), rgba(5,5,5,0.9)), url('assert/srilanka_greenery.png') center/cover; display: flex; flex-wrap: wrap; gap: 50px; align-items: center; justify-content: space-between;">
+            <div style="flex: 1; min-width: 300px;">
+                <h2 style="color: #00e5ff; font-family: var(--font-main); font-size: clamp(2.5rem, 5vw, 3.5rem); line-height: 1.1; font-weight: 800; margin-bottom: 30px;">DISCOVER THE<br>WORLD IN A<br>NEW WAY</h2>
                 
-                <!-- Success Message (hidden by default) -->
-                <div id="success-message">
-                    <i class="fas fa-check-circle" style="font-size: 4rem; color: var(--accent-color); margin-bottom: 1rem; filter: drop-shadow(0 0 10px rgba(75, 136, 162, 0.5));"></i>
+                <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 40px; cursor: pointer;">
+                    <i class="far fa-play-circle" style="font-size: 3rem; color: #fff;"></i>
+                    <span style="color: #fff; font-weight: 600; letter-spacing: 1px;">WATCH THE VIDEO</span>
+                </div>
+                
+                <p style="color: #aaa; font-size: 0.95rem; line-height: 1.8; max-width: 400px; padding-left: 20px; border-left: 2px solid #333;">
+                    "Have you ever heard an avalanche roar in the mountains? Just after the avalanche roars, and there is absolute silence. You stop understanding where you are - that's 100%. Just very quiet."
+                </p>
+            </div>
+            
+            <div style="flex: 1; min-width: 300px; display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px;">
+                <!-- Video Thumbnails -->
+                <div style="height: 120px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assert/galle_fort.png') center/cover; border-radius: 8px; position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease;"><i class="far fa-play-circle" style="color: #fff; font-size: 2rem;"></i></div>
+                <div style="height: 120px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assert/srilanka_wildlife.png') center/cover; border-radius: 8px; position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease;"><i class="far fa-play-circle" style="color: #fff; font-size: 2rem;"></i></div>
+                <div style="height: 120px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assert/srilanka_greenery.png') center/cover; border-radius: 8px; position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease;"><i class="far fa-play-circle" style="color: #fff; font-size: 2rem;"></i></div>
+                <div style="height: 120px; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('assert/galle_fort.png') center/cover; border-radius: 8px; position: relative; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: transform 0.3s ease;"><i class="far fa-play-circle" style="color: #fff; font-size: 2rem;"></i></div>
+            </div>
+        </section>
+
+        <!-- Booking Modal -->
+        <div class="booking-modal" id="booking-modal">
+            <div class="modal-content">
+                <i class="fas fa-times close-modal" id="close-modal"></i>
+                
+                <!-- Success Message -->
+                <div id="success-message" style="display: none; text-align: center; opacity: 0; transition: opacity 0.3s ease;">
+                    <i class="fas fa-check-circle" style="font-size: 4rem; color: #00e5ff; margin-bottom: 1rem; filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.5));"></i>
                     <h3 style="color: #fff; margin-bottom: 0.5rem; font-size: 1.8rem; font-family: var(--font-heading);">We'll catch you soon!</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.1rem;">Get ready to enjoy your upcoming adventure in Sri Lanka.</p>
+                    <p style="color: #ccc; font-size: 1.1rem;">Get ready to enjoy your upcoming adventure in Sri Lanka.</p>
                 </div>
 
                 <!-- Booking Form -->
                 <div id="form-wrapper">
-                    <h2 style="text-align:center; margin-bottom: 2rem;">Plan Your Adventure</h2>
+                    <h2 style="text-align:center; margin-bottom: 2rem; color: #00e5ff; font-family: var(--font-main);">Plan Your Adventure</h2>
                     <form id="booking-form">
-                        <div class="form-group">
-                            <label>Full Name</label>
-                            <input type="text" placeholder="John Doe" required>
+                        <div class="form-group" style="margin-bottom: 1rem; display: flex; flex-direction: column;">
+                            <label style="color: #aaa; margin-bottom: 0.5rem; font-size: 0.9rem;">Full Name</label>
+                            <input type="text" placeholder="John Doe" required style="padding: 15px; border-radius: 8px; width: 100%; outline: none;">
                         </div>
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" placeholder="john@example.com" required>
+                        <div class="form-group" style="margin-bottom: 1rem; display: flex; flex-direction: column;">
+                            <label style="color: #aaa; margin-bottom: 0.5rem; font-size: 0.9rem;">Email</label>
+                            <input type="email" placeholder="john@example.com" required style="padding: 15px; border-radius: 8px; width: 100%; outline: none;">
                         </div>
-                        <div class="form-group">
-                            <label>Select Tour</label>
-                            <select required>
+                        <div class="form-group" style="margin-bottom: 2rem; display: flex; flex-direction: column;">
+                            <label style="color: #aaa; margin-bottom: 0.5rem; font-size: 0.9rem;">Select Tour</label>
+                            <select required style="padding: 15px; border-radius: 8px; width: 100%; outline: none;">
                                 <option value="" disabled selected>Choose a tour...</option>
                                 <option>Cultural Triangle (5 Days)</option>
                                 <option>South Coast Retreat (7 Days)</option>
                                 <option>Hill Country Explorer (4 Days)</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn-submit">Submit Booking Request</button>
+                        <button type="submit" class="btn-submit" style="padding: 15px; border-radius: 8px; cursor: pointer;">Submit Booking Request</button>
                     </form>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
         <div class="footer-content">
             <div class="footer-brand">
                 <span class="logo">Lanka Explore</span>
-                <p>Your gateway to the wonders of Sri Lanka. We craft unforgettable travel experiences that connect you with nature, culture, and adventure across the Pearl of the Indian Ocean.</p>
+                <p>Your gateway to the wonders of Sri Lanka. We craft unforgettable travel experiences that connect you
+                    with nature, culture, and adventure across the Pearl of the Indian Ocean.</p>
                 <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-facebook"></i></a>
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-twitter"></i></a>
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-instagram"></i></a>
-                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i class="fab fa-youtube"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: var(--text-secondary); font-size: 1.2rem; transition: color 0.3s;"><i
+                            class="fab fa-youtube"></i></a>
                 </div>
             </div>
             <div class="footer-col">
@@ -133,48 +369,64 @@
     </footer>
 
     <script>
-        document.getElementById('booking-form').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent actual form submission and page reload
-            
+        // Modal Logic
+        const modal = document.getElementById('booking-modal');
+        const openBtn = document.getElementById('open-booking-modal');
+        const closeBtn = document.getElementById('close-modal');
+
+        openBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Form Submit Logic
+        document.getElementById('booking-form').addEventListener('submit', function (e) {
+            e.preventDefault(); 
+
             const formWrapper = document.getElementById('form-wrapper');
             const form = document.getElementById('booking-form');
             const successMsg = document.getElementById('success-message');
-            
-            // 1. Fade out the form
+
             formWrapper.style.transition = 'opacity 0.3s ease';
             formWrapper.style.opacity = '0';
-            
+
             setTimeout(() => {
-                // 2. Hide the form entirely and show the success message container
                 formWrapper.style.display = 'none';
                 successMsg.style.display = 'block';
-                
-                // Trigger a browser reflow to allow the CSS transition to work
-                void successMsg.offsetWidth;
-                
-                // 3. Animate the success message in (fade and scale up)
+                void successMsg.offsetWidth; 
+
                 successMsg.style.opacity = '1';
-                successMsg.style.transform = 'translate(-50%, -50%) scale(1)';
+                successMsg.style.transform = 'scale(1)';
             }, 300);
-            
-            // 4. Wait a few seconds, then revert back to the form
+
             setTimeout(() => {
-                // Fade out the success message
                 successMsg.style.opacity = '0';
-                successMsg.style.transform = 'translate(-50%, -50%) scale(0.9)';
-                
+                successMsg.style.transform = 'scale(0.9)';
+
                 setTimeout(() => {
-                    // Hide success message, clear form fields, and show form again
                     successMsg.style.display = 'none';
-                    form.reset(); 
-                    
+                    form.reset();
+
                     formWrapper.style.display = 'block';
-                    void formWrapper.offsetWidth; // Reflow
+                    void formWrapper.offsetWidth; 
                     formWrapper.style.opacity = '1';
-                }, 400); // Wait for the success message to finish fading out
-                
-            }, 4500); // Show the success message for 4.5 seconds
+                    
+                    // Automatically close the modal after success completes
+                    modal.classList.remove('active');
+                }, 400); 
+
+            }, 3500); 
         });
     </script>
 </body>
+
 </html>
